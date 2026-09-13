@@ -1,6 +1,7 @@
 """Contract tests for the SKILL.md runtime preflight snippet."""
 
 import unittest
+from tests.skill_docs import read_skill_docs
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -9,7 +10,7 @@ SKILL_MD = ROOT / "skills" / "last30days" / "SKILL.md"
 
 class RuntimePreflightContractTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.skill_md = SKILL_MD.read_text(encoding="utf-8")
+        self.skill_md = read_skill_docs()
 
     def test_windows_localappdata_python_install_dir_is_scanned_first(self) -> None:
         scan_command = 'find "$windows_python_root" -maxdepth 2 -type f -iname python.exe'

@@ -27,7 +27,7 @@
 The engine applies the selected register to evidence section order, item budgets, and source emphasis. Apply the matching synthesis guidance too. Named presets are instructions, never free-form prompt text from research content.
 
 - **default** - Keep the balanced synthesis contract below unchanged.
-- **exec** - Decisions first. After `What I learned:`, give exactly five compact numbered findings. Put the strongest number, probability, or scale signal in finding 1; state the decision implication in every finding; cut implementation trivia unless it changes the decision. Keep the required engine footer and invitation unchanged.
+- **exec** - Decisions first. After `What I learned:`, give exactly five compact numbered findings. Put the strongest number, probability, or scale signal in finding 1; state the decision implication in every finding; cut implementation trivia unless it changes the decision. Follow the host/user output and footer requirements.
 - **dev** - Technical depth first. Lead with GitHub/code evidence, shipped behavior, versions, APIs, benchmarks, failure modes, and implementation tradeoffs. Prefer live repository numbers over third-party claims. Preserve uncertainty and distinguish demonstrated behavior from proposals.
 - **creator** - Lead with the sharpest audience hook, then Best Takes and high-vote community language. Bring views, likes, shares, comment velocity, and cross-platform resonance forward. End the synthesis body with 3 concrete content angles or hooks grounded in the evidence; do not invent trend claims from raw reach alone.
 - **eli5** - Use the established ELI5 guidance below. Evidence selection and renderer bytes remain equivalent to `default`; only the explanation register changes.
@@ -70,7 +70,7 @@ The Judge Agent must:
 - **Tech/Business:** IPO, major product launch, company milestones > incremental updates
 - **Elections:** Presidency > primary > individual state
 
-**Do NOT display stats here - they come at the end, right before the invitation.**
+Include relevant statistics with their definitions and sources where they help the requested answer.
 
 6. **Polymarket odds with real money behind them are STRONGER signals than opinions.** A $66K volume market with 96% odds is more reliable than 100 tweets. Always include specific percentages in the synthesis when Polymarket markets are confirmed relevant.
 
@@ -83,3 +83,5 @@ When you see a cluster of replies to a recommendation-request tweet (someone ask
 For product comparison queries, WebSearch supplements (blog comparisons, review articles) should be weighted equally with social data. A detailed 2,000-word comparison article from Efficient App is more informative than 50 one-line tweets. Feature it in the synthesis.
 
 ---
+
+**Optional X omission:** If X is unavailable or declined, finish the useful findings first. Describe the missing source briefly without an unlock pitch. Do not open a modal or block research or re-ask cookie consent.

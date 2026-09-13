@@ -6,6 +6,7 @@ LAST30DAYS_X_BACKEND=grok to enable grok explicitly.
 """
 
 import inspect
+from tests.skill_docs import read_skill_docs
 from pathlib import Path
 from unittest import mock
 
@@ -123,7 +124,7 @@ def test_official_x_api_fragments_exist_and_changelog_is_untouched():
 # --- SKILL.md unlock surfaces ---------------------------------------------
 
 def _skill_md():
-    return (REPO / "skills" / "last30days" / "SKILL.md").read_text()
+    return read_skill_docs()
 
 
 def test_skill_md_does_not_check_grok_first():

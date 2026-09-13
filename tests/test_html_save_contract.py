@@ -1,5 +1,6 @@
 """Contract tests for the /last30days HTML save handoff."""
 
+from tests.skill_docs import read_skill_docs
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -8,7 +9,7 @@ SAVE_HTML = ROOT / "skills" / "last30days" / "references" / "save-html-brief.md"
 
 
 def test_skill_routes_html_to_reference_and_artifact_handoff():
-    text = SKILL_MD.read_text(encoding="utf-8")
+    text = read_skill_docs()
     start = text.index("## SHAREABLE HTML BRIEF")
     end = text.index("## WAIT FOR USER'S RESPONSE", start)
     section = text[start:end]
@@ -57,7 +58,7 @@ def test_html_save_flow_does_not_publish_or_upload():
 
 
 def test_markdown_and_html_access_paths_are_separate():
-    text = SKILL_MD.read_text(encoding="utf-8")
+    text = read_skill_docs()
     start = text.index("**Saved artifact access flow:**")
     section = text[start:start + 1600]
 

@@ -67,7 +67,7 @@ metadata:
       - clawhub
 ---
 
-# Last30Days research
+# last30days v3.24.0: research
 
 Research recent public discussion using the bundled engine and sources relevant to the user's question. Keep dates, source health, engagement definitions and original links so findings can be checked. Counts and benchmark claims are evidence from a particular run, not general proof of quality.
 
@@ -89,10 +89,10 @@ On PowerShell, set `$env:LAST30DAYS_PYTHON` to the installed executable, validat
 
 1. Resolve `SKILL_DIR` to the actual directory containing this file. Use its sibling `scripts/last30days.py`; do not silently switch to another installed copy.
 2. Identify the topic, timeframe, language and requested output. Read [planning](references/workflows/planning.md) and only the platform-resolution subsection needed. Use [query planning](references/workflows/query-planning.md) for broad or ambiguous topics; narrow factual checks do not require every platform.
-3. Check source readiness via the engine's `--diagnose` or permission-only `--preflight`. A configured credential or installed binary is not evidence that a source returned useful content. Read [runtime](references/workflows/runtime.md) only for host/runtime failures or special invocation modes.
+3. Check source readiness via the engine's `--diagnose` or permission-only `--preflight`. A configured credential or installed binary is not evidence that a source returned useful content. Read the relevant section of [runtime](references/workflows/runtime.md) for explicit health checks, login-backed source readiness, host/runtime failures or special invocation modes.
 4. Use [execution](references/workflows/execution.md) for the current engine invocation and artifact paths. Run only the sources and paid lanes authorized for this task. Record failed, empty and unavailable sources separately. Supplement with public authoritative web evidence where it changes the answer.
 5. Read [source synthesis](references/workflows/source-synthesis.md) for how different platforms and comments should be weighted. Use [recommendation guidance](references/workflows/recommendations.md) when comparing products or interpreting community signals.
-6. Answer the user's question with direct source links, dates and important limitations. Follow the host and user's format, citation, length and footer requirements; no mandatory badge, promotional invitation or stats footer. Required citations must not be replaced by a hidden saved-file appendix. Distinguish popularity, experience reports, official facts and your inference.
+6. Answer the user's question with direct source links, dates and important limitations. Follow the host and user's format, citation, length and footer requirements; no mandatory badge, promotional invitation or stats footer. Required citations must not be replaced by a hidden saved-file appendix. Never invent source URLs; use a label that matches what that URL opens, and never trim an item URL down to a guessed repo root. Distinguish popularity, experience reports, official facts and your inference.
 
 ## Optional modes and setup
 

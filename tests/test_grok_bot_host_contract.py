@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import re
 import unittest
+from tests.skill_docs import read_skill_docs
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,7 +59,7 @@ HEREDOC_RE = re.compile(r"<<-?\s*([^\s]+)")
 
 
 def _text() -> str:
-    return SKILL_MD.read_text(encoding="utf-8")
+    return read_skill_docs()
 
 
 def _slice_between(text: str, start_marker: str, end_marker: str) -> str:
@@ -83,8 +84,11 @@ def _recipe(text: str) -> str:
     return _slice_between(research, RECIPE_MARKER, RECIPE_END)
 
 
-def _guaranteed_band(text: str) -> str:
-    return "\n".join(text.splitlines()[:420])
+def _routed_host_rule() -> str:
+    entry = SKILL_MD.read_text(encoding="utf-8")
+    assert "references/workflows/runtime.md" in entry
+    assert "special invocation modes" in entry
+    return (SKILL_MD.parent / "references/workflows/runtime.md").read_text(encoding="utf-8")
 
 
 def _extras_passages(text: str) -> dict[str, str]:
@@ -189,11 +193,11 @@ class TestGrokBotProseFlow(unittest.TestCase):
         self.assertNotIn("AskUserQuestion", self.flow)
 
 
-class TestGuaranteedLoadedRule(unittest.TestCase):
+class TestRoutedHostRule(unittest.TestCase):
     def setUp(self):
-        self.band = _guaranteed_band(_text())
+        self.band = _routed_host_rule()
 
-    def test_rule_lives_in_the_guaranteed_loaded_band(self):
+    def test_rule_lives_in_the_linked_runtime_reference(self):
         self.assertIn("LAST30DAYS_HOST=grok-bot", self.band)
         self.assertIn("LAST30DAYS_X_HOST_LANE=1", self.band)
         self.assertIn("never place post text unquoted", self.band)
@@ -227,7 +231,7 @@ class TestConnectorRecipe(unittest.TestCase):
             "x_posts",
             "--competitors-plan",
             "X via X connector",
-            "LAW 9",
+            "host/user output requirements",
             "stderr",
         ):
             self.assertIn(token, self.recipe, token)

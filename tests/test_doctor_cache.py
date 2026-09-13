@@ -22,6 +22,7 @@ import sys
 import tempfile
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
+from tests.skill_docs import read_skill_docs
 from pathlib import Path
 from unittest import mock
 
@@ -607,7 +608,7 @@ class DoctorSkillContract(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.text = SKILL_MD.read_text(encoding="utf-8")
+        cls.text = read_skill_docs()
 
     def test_doctor_trigger_phrases_present(self):
         for phrase in (

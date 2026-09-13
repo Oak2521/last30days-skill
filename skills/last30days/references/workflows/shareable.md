@@ -28,3 +28,11 @@
 **Why the directive is forceful:** the reference file is the only source of truth for the save flow. Skipping it produces broken artifacts - wrong path conventions, missing synthesis content, leaked engine debug output, or warnings that don't belong in shareable docs.
 
 ---
+
+**Saved artifact access flow:**
+- **Markdown file requested:** show the absolute path and use the host's local file link. Do not offer hosted publishing for Markdown unless explicitly requested.
+- **HTML file requested:** show the absolute path and the requested artifact handoff; possible next actions are open the HTML file, publish to an available/preferred HTML publishing service, or done for now. Publishing still requires the user's corresponding explicit request and applicable approval.
+
+## WAIT FOR USER'S RESPONSE
+
+The completed answer or requested local artifact is sufficient. Additional persistence or publishing is not a completion condition.

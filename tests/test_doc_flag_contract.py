@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from tests.skill_docs import read_skill_docs
 from pathlib import Path
 
 import last30days as cli
@@ -62,7 +63,7 @@ def test_html_publish_reference_prompts_for_password_choice():
 
 def test_reddit_backend_env_var_is_documented_for_users_and_runtime_skill():
     config_text = CONFIGURATION.read_text(encoding="utf-8")
-    skill_text = SKILL_MD.read_text(encoding="utf-8")
+    skill_text = read_skill_docs()
 
     assert "LAST30DAYS_REDDIT_BACKEND=scrapecreators" in config_text
     assert "LAST30DAYS_REDDIT_BACKEND=scrapecreators" in skill_text
@@ -84,7 +85,7 @@ def test_save_is_not_documented_as_python_cli_flag():
 
 
 def test_agent_is_documented_as_skill_argument_not_python_flag():
-    text = SKILL_MD.read_text(encoding="utf-8")
+    text = read_skill_docs()
     start = text.index("## Agent Mode (--agent flag)")
     agent_section = text[start:start + 2000]
     assert "If `--agent` appears in ARGUMENTS" in agent_section
@@ -109,7 +110,7 @@ def test_configuration_documents_report_cache_ttl():
 
 
 def test_comparison_artifact_contract_documents_actual_paths():
-    text = SKILL_MD.read_text(encoding="utf-8")
+    text = read_skill_docs()
     comparison_start = text.index("\n## If QUERY_TYPE = COMPARISON\n")
     comparison_section = text[comparison_start:comparison_start + 5000]
     assert "there is no separate merged Markdown raw file" in comparison_section

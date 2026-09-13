@@ -15,6 +15,7 @@ wizard in PR #659 and flattened it before this restoration).
 """
 
 import unittest
+from tests.skill_docs import read_skill_docs
 from pathlib import Path
 
 from lib import setup_wizard
@@ -26,7 +27,7 @@ AGENTS_MD = ROOT / "AGENTS.md"
 
 class TestOnboardingContract(unittest.TestCase):
     def setUp(self):
-        self.text = SKILL_MD.read_text(encoding="utf-8")
+        self.text = read_skill_docs()
         # Scope assertions to Step 0 so generic substrings elsewhere in the file
         # do not satisfy ordering/presence checks.
         start = self.text.index("## Step 0: First-Run Setup Wizard")
