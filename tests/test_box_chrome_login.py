@@ -7,6 +7,7 @@ repair section with the MacBook-skip and no-.env-cookie rules. No cookie values
 are ever produced (the helper reads none).
 """
 
+from tests.skill_docs import read_skill_docs
 from pathlib import Path
 from unittest import mock
 
@@ -168,7 +169,7 @@ def test_linux_and_mac_mini_recipe_unchanged_without_host_signal():
 
 
 def _skill():
-    return SKILL.read_text()
+    return read_skill_docs()
 
 
 def test_skill_md_references_helper_in_flows_and_repair():

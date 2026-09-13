@@ -1,6 +1,7 @@
 import re
 import unittest
 from pathlib import Path
+from tests.skill_docs import read_skill_docs
 
 from lib.skill_meta import read_skill_version
 
@@ -39,10 +40,11 @@ class TestVersionConsistency(unittest.TestCase):
         compare_text = (SKILL_ROOT / "scripts" / "compare.sh").read_text(encoding="utf-8")
         default_assignment = 'LAST30DAYS_MEMORY_DIR="${LAST30DAYS_MEMORY_DIR:-$HOME/Documents/Last30Days}"'
 
-        self.assertIn(default_assignment, skill_text)
+        self.assertIn('LAST30DAYS_MEMORY_DIR=$(mktemp -d', skill_text)
+        self.assertIn("export LAST30DAYS_PYTHON LAST30DAYS_MEMORY_DIR", skill_text)
         self.assertIn(default_assignment, compare_text)
         self.assertNotIn("--save-dir=~/Documents/Last30Days", skill_text)
-        self.assertIn('--save-dir="${LAST30DAYS_MEMORY_DIR}"', skill_text)
+        self.assertIn('--save-dir="${LAST30DAYS_MEMORY_DIR}"', read_skill_docs())
 
     def test_compare_script_does_not_skip_permissions(self) -> None:
         compare_text = (SKILL_ROOT / "scripts" / "compare.sh").read_text(encoding="utf-8")
